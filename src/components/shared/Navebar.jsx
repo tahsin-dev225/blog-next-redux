@@ -9,7 +9,7 @@ const Navebar = () => {
     const isUser = useSelector(state => state?.userReducer?.userData)
     const user = useSelector(state => state?.userReducer?.isAdmin)
 
-    console.log(isUser)
+    // console.log(isUser)
 
     return (
         <div className="navbar bg-base-100">
@@ -42,7 +42,7 @@ const Navebar = () => {
                     navItems?.map((item,idx) =><Link key={idx} className="mx-3" href={item.path}>{item?.title}</Link>)
                 }
                 {user?.role === 'admin' && <Link className="mx-3" href="/dashboard">Dashboard</Link>}
-                {user?.email && <Link className="mx-3" href="/dashboard/add-blogs">Add Blog</Link>}
+                {isUser && <Link className="mx-3" href="/dashboard/add-blogs">Add Blog</Link>}
             </div>
             <div className="navbar-end">
                 {

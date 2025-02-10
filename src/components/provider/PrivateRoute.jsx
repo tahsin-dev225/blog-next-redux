@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 const PrivateRoute = ({role,children}) => {
     const isUser = useSelector(state => state?.userReducer?.userData)
     
-    console.log(isUser)
+    // console.log(isUser)
     const user = useSelector(state => state?.userReducer?.isAdmin)
-    console.log(user)
+    // console.log(user)
     const isMatched = role.includes(user?.role)
     
 

@@ -9,12 +9,12 @@ import Link from "next/link";
 const BlogsHome = () => {
     const loading = useSelector(state => state?.blogReducer?.isLoading)
     const [blogs, setBlogs] = useState([])
-    console.log('loading', loading)
+    // console.log('loading', loading)
 
     useEffect(()=>{
         axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/approvedgBlogs`, {withCredentials : true})
         .then(res =>{
-            console.log('res form home blogs',res)
+            // console.log('res form home blogs',res)
             setBlogs(res.data)
         })
         .catch(err =>{
