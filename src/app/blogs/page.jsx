@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const page = () => {
     const loading = useSelector(state => state?.blogReducer?.isLoading)
-    // const [blogs, setBlogs] = useState([])
+    const [blogs, setBlogs] = useState([])
     // console.log('loading', loading)
     
     useEffect(()=>{
