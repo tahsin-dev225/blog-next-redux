@@ -37,7 +37,8 @@ const userSlice = createSlice({
     initialState :{
         data : null,
         userData : null,
-        isAdmin : null
+        isAdmin : null,
+        isLoading : true
     },
     reducers : {},
     extraReducers : (builder)=>{
@@ -47,14 +48,28 @@ const userSlice = createSlice({
         builder.addCase(addUser.rejected , (state,action)=>{
             console.log(action.payload)
         })
+        builder.addCase(getUser.pending , (state,action)=>{
+            state.isLoading = true
+            console.log('getUser pending true' )
+        })
         builder.addCase(getUser.fulfilled , (state,action)=>{
             state.userData = action.payload;
+            state.isLoading = false
+            console.log('getUser filfild flase')
+        })
+        builder.addCase(getAdmin.pending , (state,action)=>{
+            state.isLoading = true
+            console.log('getAdmin pending true')
         })
         builder.addCase(getAdmin.fulfilled , (state,action)=>{
             state.isAdmin = action.payload;
+            state.isLoading = false
+            console.log('getAdmin pending false')
         })
         builder.addCase(getAdmin.rejected , (state,action)=>{
             console.log(action.payload)
+            state.isLoading = false
+            console.log('getAdmin pending false')
         })
     }
 })

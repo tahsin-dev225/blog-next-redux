@@ -10,6 +10,7 @@ const auth = getAuth(app)
 const useFirebase = () => {
     const [user,setUser] = useState(null)
     const dispatch = useDispatch();
+    const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email,passowrd)=>{
         return createUserWithEmailAndPassword(auth,email,passowrd)
@@ -18,6 +19,11 @@ const useFirebase = () => {
     const signIn = (email, passowrd)=>{
         return signInWithEmailAndPassword(auth , email,passowrd)
     }
+
+    const googleSignIn = ()=>{
+        return signInWithPopup(auth, googleProvider )
+    }
+
     const logOut = ()=>{
         return signOut(auth)
     }
@@ -30,7 +36,7 @@ const useFirebase = () => {
         })
     },[])
 
-    return {createUser , signIn , logOut }
+    return {createUser , signIn , logOut , googleSignIn }
 };
 
 export default useFirebase;

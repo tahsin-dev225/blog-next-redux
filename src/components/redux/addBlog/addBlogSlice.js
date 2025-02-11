@@ -24,7 +24,6 @@ export const deleteBlogs = createAsyncThunk("deleteBlogs", async(deleteId,{rejec
 })
 
 export const approvedPendeigBlog = createAsyncThunk("approvedPendeigBlog", async(blog,{rejectWithValue})=>{
-    
     try {
         const resp = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/approvedgBlogs`,blog ,{withCredentials : true});
         // console.log('mainn',resp)
@@ -51,33 +50,28 @@ const blogSlice = createSlice({
             state.isLoading = false;
             state.data = action.payload;
         });
-        
         builder.addCase(addBlogs.rejected , (state , action)=>{
             state.isLoading = false
             console.log("eroor", action.payload);
         })
         
-
         builder.addCase(deleteBlogs.pending , (state , action )=>{
             state.isLoading = true
         });builder.addCase(deleteBlogs.fulfilled, (state,action)=>{
             // console.log('action', action.payload);
             state.isLoading = false;
         });
-        
         builder.addCase(deleteBlogs.rejected , (state , action)=>{
             state.isLoading = false
             console.log("eroor", action.payload);
         })
         
-
         builder.addCase(approvedPendeigBlog.pending , (state , action )=>{
             state.isLoading = true
         });builder.addCase(approvedPendeigBlog.fulfilled, (state,action)=>{
             // console.log('action', action.payload);
             state.isLoading = false;
         });
-        
         builder.addCase(approvedPendeigBlog.rejected , (state , action)=>{
             state.isLoading = false
             console.log("eroor", action.payload);

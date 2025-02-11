@@ -1,21 +1,20 @@
 "use client"
 
+import Link from "next/link";
+
 const Footer = () => {
     return (
         <footer className="footer bg-base-300 text-base-content p-10">
-            <nav>
-                <h6 className="footer-title">Services</h6>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
-            </nav>
+            <div className="">
+                <button className="btn btn-ghost btn-lg">BLOG-y</button>
+                <h2 className="">An online platform where people share their thoughts, knowledge, experiences, or information.</h2>
+            </div>
             <nav>
                 <h6 className="footer-title">Company</h6>
+                <Link href='/' className="link link-hover">Home</Link>
+                <Link href='/blogs' className="link link-hover">Blogs</Link>
                 <a className="link link-hover">About us</a>
                 <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
             </nav>
             <nav>
                 <h6 className="footer-title">Social</h6>

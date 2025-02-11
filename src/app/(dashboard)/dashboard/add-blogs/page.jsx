@@ -2,11 +2,16 @@
 import PrivateRoute from "@/components/provider/PrivateRoute";
 import UserRoute from "@/components/provider/UserRoute";
 import { addBlogs } from "@/components/redux/addBlog/addBlogSlice";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const page = () => {
     const dispatch = useDispatch()
     const role = ['admin']
+    const [disable, setdisable] = useState(false)
+    
+    const normalButton = "w-full my-10 py-2 bg-blue-900/90 rounded cursor-pointer"
+    const disablelButton = "w-full text-black my-6 py-2 bg-slate-400 rounded"
 
     const handleAddBlogs = (e)=>{
         e.preventDefault();
@@ -52,7 +57,7 @@ const page = () => {
                             <p className="my-3 text-sm font-thin">Date.</p>
                             <input type="date" name='date' placeholder="Date" className="input w-full input-bordered" required />
                         </div>
-                        <input className="w-full my-10 py-2 bg-blue-900/90 rounded cursor-pointer" type="submit" value="Add Blogs" />
+                        <input disabled={disable} className={`${disable ? disablelButton : normalButton}  `}  type="submit" value="Add Blogs" />
                     </form>
                 </div>
             </div>
