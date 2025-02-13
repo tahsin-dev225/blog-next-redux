@@ -3,16 +3,26 @@ import useFirebase from "@/firebase/useFirebase";
 import Link from "next/link";
 import { IoMdLogOut, IoMdPersonAdd } from "react-icons/io";
 import { useSelector } from "react-redux";
+import Drawer from 'react-modern-drawer'
+
+import 'react-modern-drawer/dist/index.css'
+import { useState } from "react";
+import Image from "next/image";
+import { FaRegCircleUser, FaRegUser } from "react-icons/fa6";
 
 const Navebar = () => {
     const {logOut, } = useFirebase();
+    const [isOpen, setIsOpen] = useState(false)
     const isUser = useSelector(state => state?.userReducer?.userData)
     const user = useSelector(state => state?.userReducer?.isAdmin)
-
-    // console.log(isUser)
+    
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    }
+    // console.log(user)
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100/70">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,7 +45,7 @@ const Navebar = () => {
                     
                 </ul>
                 </div>
-                <Link href='/' className="btn btn-ghost">BLOG-y</Link>
+                <Link href='/' className="mx-3"><Image className="rounded" src='/img/blog-logo2.jpg' width={80} height={40} alt="logo" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 {
@@ -47,11 +57,30 @@ const Navebar = () => {
             <div className="navbar-end">
                 {
                      isUser ?  
-                    <button onClick={()=> logOut()} className="btn btn-primary text-white btn-sm"><IoMdLogOut />Log out</button>
+                     <FaRegUser className="text-3xl cursor-pointer p-1 border mx-3 my-2 border-stone-500 rounded-full " onClick={toggleDrawer}/>
+                    
                      :
                      <Link href='/login' className="btn btn-primary text-white btn-sm"><IoMdPersonAdd />login</Link>
                 }
+                {
+                isUser &&
+                <Drawer
+                open={isOpen}
+                onClose={toggleDrawer}
+                direction='right'
+                className=''
+                >
+                    <div className="flex justify-center flex-col h-full items-center">
+                        <div className="">
+                            <Image className="my-6 rounded-full" src={`/img/userDef.png`} width={80} height={80} alt="user" />
+                            <p className="text-center text-slate-800">{user?.name}</p>
+                        </div>
+                        <button onClick={()=> logOut()} className="btn btn-primary my-8 text-white btn-sm"><IoMdLogOut />Log out</button>
+                    </div>
+                </Drawer>
+                }
             </div>
+            
         </div>
     );
 };

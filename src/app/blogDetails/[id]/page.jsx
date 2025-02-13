@@ -18,12 +18,13 @@ const page = ({params}) => {
         .catch(err =>{
             console.error('erro from blog details',err)
         })
-    },[])
+    },[loading])
+
     return (
         <UserRoute>
-            <div className="lg:w-[75%] mx-auto">
+            <div className="lg:w-[75%] mx-auto h-screen">
                 <div className="flex p-5 gap-10">
-                    <div className="max-w-[400px]"><Image className="w-full" src={blog?.photo} width={500} height={600} alt="blog" /></div>
+                    <div className="max-w-[600px]"><Image className="w-full" src={blog?.photo} width={700} height={600} alt="blog" /></div>
                     <div className="">
                         <h1 className="text-4xl ">Title : {blog?.title}</h1>
                         <p className="text-lg my-4 ">Date : {blog?.date}</p>
@@ -31,7 +32,6 @@ const page = ({params}) => {
                         <p className="text-lg my-8 px-2">description : {blog?.discription}</p>
                     </div>
                 </div>
-                
             </div>
         </UserRoute>
     );
