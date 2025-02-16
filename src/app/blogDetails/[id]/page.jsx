@@ -31,6 +31,7 @@ const page = ({params}) => {
                         <h1 className="text-4xl ">Title : {blog?.title}</h1>
                         <p className="text-[14px] my-2 ">Date : {blog?.date}</p>
                         <p className="text-[15px] my-2 ">Category : {blog?.category}</p>
+                        <div className="size-5 bg-red-500 rounded-sm my-1 mt-4"></div>
                         <div dangerouslySetInnerHTML={{ __html: blog?.discription }} />
                         
                     </div>
