@@ -11,7 +11,7 @@ const Blogs = ({blog}) => {
                 <Image className="w-full object-cover mx-auto  h-[300px]" src={blog?.photo} width={500} height={300} alt="blog" />
            </div>
             <div className=" px-3 py-3 ">
-                <h1 className="text-xl text-slate-900 my-2">{blog?.title}</h1>
+                <h1 className="text-[21px] font-medium text-slate-900 my-2">{blog?.title}</h1>
                 <div className="text-[14px]  my-2 font-thin line-clamp-2" dangerouslySetInnerHTML={{ __html: blog?.discription }} />
                 <div className="flex justify-between w-full">
                     <p className="flex gap-1 justify-center items-center text-[14px] text-slate-700"><FaClock />{blog?.date}</p>
