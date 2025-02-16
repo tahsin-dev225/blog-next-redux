@@ -22,14 +22,17 @@ const page = ({params}) => {
 
     return (
         <UserRoute>
-            <div className="lg:w-[75%] mx-auto h-screen">
-                <div className="flex p-5 gap-10">
-                    <div className="max-w-[600px]"><Image className="w-full" src={blog?.photo} width={700} height={600} alt="blog" /></div>
-                    <div className="">
+            <div className="lg:w-[75%] mx-auto min:h-screen">
+                <div className="lg:flex p-5  gap-10">
+                    <div className="xl:max-w-[600px] overflow-y-hidden flex-grow xl:min-w-[580px] min-h-[700px]">
+                        <Image className="w-full min-h-[400px] object-cover" src={blog?.photo} width={900} height={600} alt="blog" />
+                    </div>
+                    <div className="my-5">
                         <h1 className="text-4xl ">Title : {blog?.title}</h1>
-                        <p className="text-lg my-4 ">Date : {blog?.date}</p>
-                        <p className="text-lg my-4 ">Category : {blog?.category}</p>
-                        <p className="text-lg my-8 px-2">description : {blog?.discription}</p>
+                        <p className="text-[14px] my-2 ">Date : {blog?.date}</p>
+                        <p className="text-[15px] my-2 ">Category : {blog?.category}</p>
+                        <div dangerouslySetInnerHTML={{ __html: blog?.discription }} />
+                        
                     </div>
                 </div>
             </div>

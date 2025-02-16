@@ -1,15 +1,23 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
+import { FaClock } from "react-icons/fa6";
 import { TiArrowRightThick } from "react-icons/ti";
 
 const Blogs = ({blog}) => {
     return (
-        <div className="border border-slate-900 rounded-md w-full ">
-            <Image className="w-full mx-auto max-h-96 " src={blog?.photo} width={500} height={300} alt="blog" />
-            <div className="flex justify-between px-2 py-1 items-center">
-                <h1 className="text-3xl  my-2">{blog?.title}</h1>
-                <Link className="text-2xl p-2 rounded-full border border-slate-700" href={`/blogDetails/${blog?._id}`}><TiArrowRightThick/></Link>
+        <div className="border bg-slate-200 text-slate-800 border-slate-900 rounded-md w-full ">
+           <div className="flex justify-center items-center min-h-[300px] max-h-[300px] overflow-hidden"> 
+                <Image className="w-full object-cover mx-auto  h-[300px]" src={blog?.photo} width={500} height={300} alt="blog" />
+           </div>
+            <div className=" px-3 py-3 ">
+                <h1 className="text-xl text-slate-900 my-2">{blog?.title}</h1>
+                <div className="text-[14px]  my-2 font-thin line-clamp-2" dangerouslySetInnerHTML={{ __html: blog?.discription }} />
+                <div className="flex justify-between w-full">
+                    <p className="flex gap-1 justify-center items-center text-[14px] text-slate-700"><FaClock />{blog?.date}</p>
+                    <Link className="text-xl  flex w-max  justify-center items-center gap-1 text-sky-400" href={`/blogDetails/${blog?._id}`}>Read <TiArrowRightThick/></Link>
+                </div>
+                
             </div>
         </div>
     );

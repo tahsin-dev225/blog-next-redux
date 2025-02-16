@@ -2,28 +2,35 @@
 import PrivateRoute from "@/components/provider/PrivateRoute";
 import UserRoute from "@/components/provider/UserRoute";
 import { addBlogs } from "@/components/redux/addBlog/addBlogSlice";
+import CustomQuill from "@/components/shared/CustomQuill";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const page = () => {
     const dispatch = useDispatch()
     const role = ['admin']
-    const [disable, setdisable] = useState(false)
+    const [disable, setDisable] = useState(false)
+    const [content, setContent] = useState("");
     
     const normalButton = "w-full my-10 py-2 bg-blue-900/90 rounded cursor-pointer"
     const disablelButton = "w-full text-black my-6 py-2 bg-slate-400 rounded"
 
     const handleAddBlogs = (e)=>{
+        setDisable(true)
         e.preventDefault();
+        const description = content;
+        console.log('got the content des' , description)
         const newBlog= {
             title : e.target.title.value,
             category : e.target.category.value,
-            discription : e.target.discription.value,
+            discription : description,
             photo : e.target.photo.value,
             date : e.target.date.value,
         }
         dispatch(addBlogs(newBlog))
         e.target.reset();
+        setDisable(false)
+        setContent('')
     }
 
     return (
@@ -45,8 +52,8 @@ const page = () => {
                         </div>
                         <div className="flex gap-4 flex-col lg:flex-row">
                             <div className="w-full">
-                                <p className="my-3 text-sm font-thin">Description.</p>
-                                <input type="text" name='discription' placeholder="Discription" className="input w-full input-bordered" required />
+                                <p className="my-3 text-sm font-thin">Date.</p>
+                                <input type="date" name='date' placeholder="Date" className="input w-full input-bordered" required />
                             </div>
                             <div className="w-full">
                                 <p className="my-3 text-sm font-thin">Photo url</p>
@@ -54,9 +61,10 @@ const page = () => {
                             </div>
                         </div>
                         <div className="">
-                            <p className="my-3 text-sm font-thin">Date.</p>
-                            <input type="date" name='date' placeholder="Date" className="input w-full input-bordered" required />
+                            <p className="my-3 text-sm font-thin">Description.</p>
+                            <textarea  name='discription' placeholder="Discription" className="input pt-1 min-h-[200px] w-full input-bordered" required />
                         </div>
+                        <CustomQuill value={content} onChange={setContent} />
                         <input disabled={disable} className={`${disable ? disablelButton : normalButton}  `}  type="submit" value="Add Blogs" />
                     </form>
                 </div>

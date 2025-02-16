@@ -1,12 +1,13 @@
 "use client"
 
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
     return (
         <footer className="footer bg-base-300 text-base-content p-10">
             <div className="">
-                <button className="btn btn-ghost btn-lg">BLOG-y</button>
+                <Link href='/' className="btn btn-ghost btn-lg"><Image className="rounded" src='/img/up-logo.jpg' width={100} height={60} alt="logo" /></Link >
                 <h2 className="">An online platform where people share their thoughts, knowledge, experiences, or information.</h2>
             </div>
             <nav>

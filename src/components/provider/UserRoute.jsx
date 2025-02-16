@@ -19,7 +19,7 @@ const UserRoute = ({role,children}) => {
     }
     
     if(isUser){
-        return <div className="w-full">
+        return <div className="w-full min-h-screen">
             {children}
         </div>
     }

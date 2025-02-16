@@ -42,10 +42,14 @@ const Navebar = () => {
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    
+                    {
+                        navItems?.map((item,idx) =><Link key={idx} className="my-2" href={item.path}>{item?.title}</Link>)
+                    }
+                    {isUser && <Link className="my-2" href="/dashboard/add-blogs">Add Blog</Link>}
+                    {user?.role === 'admin' && <Link className="my-2" href="/dashboard">Dashboard</Link>}
                 </ul>
                 </div>
-                <Link href='/' className="mx-3"><Image className="rounded" src='/img/blog-logo2.jpg' width={80} height={40} alt="logo" /></Link>
+                <Link href='/' className="mx-3"><Image className="rounded" src='/img/up-logo.jpg' width={80} height={40} alt="logo" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 {
@@ -73,7 +77,7 @@ const Navebar = () => {
                     <div className="flex justify-center flex-col h-full items-center">
                         <div className="">
                             <Image className="my-6 rounded-full" src={`/img/userDef.png`} width={80} height={80} alt="user" />
-                            <p className="text-center text-slate-800">{user?.name}</p>
+                            <p className="text-center text-slate-800">Name : {user?.name}</p>
                         </div>
                         <button onClick={()=> logOut()} className="btn btn-primary my-8 text-white btn-sm"><IoMdLogOut />Log out</button>
                     </div>

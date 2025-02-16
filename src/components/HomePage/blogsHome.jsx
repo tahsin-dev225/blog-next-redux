@@ -23,10 +23,10 @@ const BlogsHome = () => {
     },[loading])
 
     return (
-        <div className="my-20 ">
+        <div className="my-20 w-[95%] mx-auto">
             <h1 className="text-center mx-auto text-5xl font-semibold">Our Blogs</h1>
             <p className="md:max-w-[60%] mx-auto my-4 mb-8 text-center ">Platform where people share their thoughts, knowledge, experiences, or information.</p>
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 p-4 my-3">
+            <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 p-4 my-3">
                 {blogs.slice(0,8).map((blog,idx)=><Blogs key={idx} blog={blog}>
 
                 </Blogs>)}
