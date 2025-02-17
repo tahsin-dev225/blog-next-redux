@@ -7,8 +7,8 @@ import { TiArrowRightThick } from "react-icons/ti";
 const Blogs = ({blog}) => {
     return (
         <div className="border bg-slate-200 text-slate-800 border-slate-900 rounded-md w-full ">
-           <div className="flex justify-center items-center min-h-[300px] max-h-[300px] overflow-hidden"> 
-                <Image className="w-full object-cover mx-auto  h-[300px]" src={blog?.photo} width={500} height={300} alt="blog" />
+           <div className="flex justify-center rounded-t items-center min-h-[300px] max-h-[300px] overflow-hidden"> 
+                <Image className="w-full rounded-t object-cover mx-auto  h-[300px]" src={blog?.photo} width={500} height={300} alt="blog" />
            </div>
             <div className=" px-3 py-3 ">
                 <h1 className="text-[21px] font-medium text-slate-900 my-2">{blog?.title}</h1>

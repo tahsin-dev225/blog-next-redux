@@ -62,7 +62,7 @@ const page = () => {
                         </div>
                         <div className="">
                             <p className="my-3 text-sm font-thin">Description.</p>
-                            <textarea  name='discription' placeholder="Discription" className="input pt-1 min-h-[200px] w-full input-bordered" required />
+                            {/* <textarea  name='discription' placeholder="Discription" className="input pt-1 min-h-[200px] w-full input-bordered" required /> */}
                         </div>
                         <CustomQuill value={content} onChange={setContent} />
                         <input disabled={disable} className={`${disable ? disablelButton : normalButton}  `}  type="submit" value="Add Blogs" />

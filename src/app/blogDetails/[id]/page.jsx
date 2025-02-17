@@ -25,7 +25,7 @@ const page = ({params}) => {
             <div className="lg:w-[75%] mx-auto min:h-screen">
                 <div className="lg:flex p-5  gap-10">
                     <div className="xl:max-w-[600px] overflow-y-hidden flex-grow xl:min-w-[580px] min-h-[700px]">
-                        <Image className="w-full min-h-[400px] object-cover" src={blog?.photo} width={900} height={600} alt="blog" />
+                        <Image className="w-full rounded-sm min-h-[400px] object-cover" src={blog?.photo} width={900} height={600} alt="blog" />
                     </div>
                     <div className="my-5">
                         <h1 className="text-4xl ">Title : {blog?.title}</h1>
