@@ -6,7 +6,7 @@ const page = () => {
     return (
         <PrivateRoute role={['admin']}>
             <div className="p-3">
-                dashboard
+                
             </div>
         </PrivateRoute>
     );
